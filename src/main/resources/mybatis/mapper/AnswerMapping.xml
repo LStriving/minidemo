@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.question.minidemo.mapper.AnswerMapper">
+    <select id="queryAnswerByAId"  parameterType="String" resultType="Answer">
+        select * from question.answer where aid=#{aid}
+    </select>
+    <select id="queryAnswerByPId" parameterType="String" resultType="String">
+        select * from question.answer where pid=#{pid}
+    </select>
+    <select id="queryAnswerByUId" parameterType="String" resultType="String">
+        select * from question.answer where uid=#{uid}
+    </select>
+    <insert id="insertAnswer" parameterType="Answer">
+        insert into question.answer(aid,content,pid,uid,`like`,`time`)
+        values (#{aid},#{content},#{pid},#{uid},#{like},#{time})
+    </insert>
+    <delete id="deleteAnswer" parameterType="String">
+        delete from question.answer where aid=#{aid}
+    </delete>
+    <update id="updateAnswer" parameterType="Answer">
+        update question.answer set aid=#{aid},content=#{content},pid=#{pid},uid=#{uid},`like`=#{like},`time`=#{time}
+        where aid=#{aid}
+    </update>
+
+</mapper>

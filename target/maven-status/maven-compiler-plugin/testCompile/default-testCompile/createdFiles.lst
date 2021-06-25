@@ -1,0 +1,6 @@
+com\question\minidemo\MinidemoApplicationTests.class
+com\question\minidemo\testMapper\TestUser.class
+com\question\minidemo\testController\testAnswer.class
+com\question\minidemo\testController\testProblem.class
+com\question\minidemo\testController\testComment.class
+com\question\minidemo\testController\testUser.class

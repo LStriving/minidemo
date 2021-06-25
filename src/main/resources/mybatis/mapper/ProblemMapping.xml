@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.question.minidemo.mapper.ProblemMapper">
+    <select id="queryProblemById" parameterType="String" resultType="Problem">
+        select * from question.problem where pid=#{pid}
+    </select>
+    <insert id="insertProblem"  parameterType="Problem">
+        insert into question.problem(pid,uid,status,`time`,content,tag,bill,ans_num,title)
+        values(#{pid},#{uid},#{status},#{time},#{content},#{tag},#{bill},#{ans_num},#{title})
+    </insert>
+    <delete id="deleteProblem" parameterType="String">
+        delete from question.problem where pid=#{pid}
+    </delete>
+    <update id="updateProblem" parameterType="Problem">
+        update question.problem
+        set pid=#{pid},uid=#{uid},status=#{status},`time`=#{time},content=#{content},tag=#{tag},bill=#{bill},ans_num=#{ans_num}
+        where pid=#{pid}
+    </update>
+    <select id="queryUserProblem" parameterType="String" resultType="String">
+        select pid from question.problem
+        where uid=#{uid}
+    </select>
+    <select id="queryAll" resultType="String">
+        select pid from question.problem
+    </select>
+    <select id="queryAllByTime" resultType="String">
+        select pid from question.problem order by question.time
+-- 功能待检验
+    </select>
+</mapper>

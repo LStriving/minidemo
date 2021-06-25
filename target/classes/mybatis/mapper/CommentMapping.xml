@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.question.minidemo.mapper.CommentMapper">
+    <select id="queryCommentByCid" parameterType="String" resultType="Comment">
+        select * from question.comment where cid=#{cid}
+    </select>
+    <select id="queryProblemComment" parameterType="String" resultType="String">
+        select * from question.comment where pid=#{pid}
+    </select>
+    <select id="queryUserComment" parameterType="String" resultType="String">
+        select * from question.comment where uid=#{uid}
+    </select>
+    <insert id="insertComment" parameterType="Comment">
+        insert into question.comment (pid,content,uid,cid,cid_p,`time`)
+        values (#{pid},#{content},#{uid},#{cid},#{cid_p},#{time})
+    </insert>
+    <delete id="deleteComment" parameterType="String">
+        delete from question.comment where cid=#{cid}
+    </delete>
+</mapper>

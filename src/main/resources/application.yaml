@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/question?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      #utf8不支持emoji，改成utf8mb4
+      connectionInitSqls: set names utf8mb4
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      use-global-data-source-stat: true
+  servlet:
+    multipart:
+      max-file-size: 128KB
+      max-request-size: 128KB
+server:
+  port: 8080
+mybatis:
+  type-aliases-package: com.question.minidemo.dto
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
