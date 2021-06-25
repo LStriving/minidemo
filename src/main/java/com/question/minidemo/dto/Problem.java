@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Problem {
     private String uid;
     private String pid;
