@@ -15,4 +15,5 @@ public interface ProblemMapper {
     void updateProblem(Problem problem);
     List<String> queryUserProblem(String uid);
     List<String> queryAll();
+    List<String> searchPattern(String pattern);
 }
