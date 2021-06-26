@@ -19,4 +19,5 @@ public interface ProblemService {
     JsonResult<List<String>> getAllProblem();
     JsonResult<List<String>> getUserProblemUnsolved(String uid);
     JsonResult<List<String>> getUserProblemSolved(String uid);
+    JsonResult<List<String>> search(String pattern);
 }
