@@ -96,6 +96,13 @@ public class ProblemController {
         String filename = "//question//pic//" + fileName;
         model.addAttribute("filename", filename);
         return new JsonResult<>("10000",null);
+
+
     }
+    @RequestMapping ("/search")
+    public JsonResult<List<String>>search(@RequestParam("pattern")String pattern){
+        return problemService.search(pattern);
+    }
+
 
 }
