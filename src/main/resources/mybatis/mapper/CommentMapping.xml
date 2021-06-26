@@ -14,7 +14,7 @@
     </select>
     <insert id="insertComment" parameterType="Comment">
         insert into question.comment (pid,content,uid,cid,cid_p,`time`)
-        values (#{pid},#{content},#{uid},#{cid},#{cid_p},#{time})
+        values (#{pid},#{content},#{uid},#{cid},#{cid_p,jdbcType=VARCHAR},#{time})
     </insert>
     <delete id="deleteComment" parameterType="String">
         delete from question.comment where cid=#{cid}
