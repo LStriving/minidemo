@@ -8,15 +8,14 @@
     </select>
     <insert id="insertProblem"  parameterType="Problem">
         insert into question.problem(pid,uid,status,`time`,content,tag,bill,ans_num,title)
-        values(#{pid},#{uid},#{status},#{time},#{content},#{tag},#{bill},#{ans_num},#{title})
+        values(#{pid},#{uid},#{status},#{time},#{content},#{tag,jdbcType=VARCHAR},#{bill},#{ans_num},#{title})
     </insert>
     <delete id="deleteProblem" parameterType="String">
         delete from question.problem where pid=#{pid}
     </delete>
     <update id="updateProblem" parameterType="Problem">
         update question.problem
-        set pid=#{pid},uid=#{uid},status=#{status},`time`=#{time},content=#{content},tag=#{tag},bill=#{bill},ans_num=#{ans_num}
-        where pid=#{pid}
+        set pid=#{pid},uid=#{uid},status=#{status},`time`=#{time},content=#{content},tag=#{tag},bill=#{bill},ans_num=#{ans_num},title=#{title,jdbcType=VARCHAR}        where pid=#{pid}
     </update>
     <select id="queryUserProblem" parameterType="String" resultType="String">
         select pid from question.problem
