@@ -28,6 +28,16 @@ public class ProblemServiceImp implements ProblemService {
     }
 
     @Override
+    public JsonResult<List<String>> search(String pattern) {
+        List<String> pid=problemMapper.searchPattern(pattern);
+        JsonResult<List<String>> json;
+        json = pid != null
+                ?new JsonResult<>("10000",pid)
+                :new JsonResult<>("20000",null);
+        return json;
+    }
+
+    @Override
     public JsonResult<Problem> addProblem(Problem problem) {
         User user= userMapper.queryUserById(problem.getUid());
         if(user.getBill()<problem.getBill()||problem.getBill()<=0){
