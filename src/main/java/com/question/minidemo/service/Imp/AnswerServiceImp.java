@@ -36,6 +36,12 @@ public class AnswerServiceImp implements AnswerService {
         answerMapper.insertAnswer(answer);
         Answer res = answerMapper.queryAnswerByAId(answer.getAid());
         JsonResult<String> json;
+        if(res!=null) {
+            //发表回答，经验+10
+            User user = userMapper.queryUserById(answer.getUid());
+            user.setExp(user.getExp() + 10);
+            userMapper.updateUser(user);
+        }
         json = res != null
                 ?new JsonResult<>("10000",null)
                 :new JsonResult<>("20000",null);
@@ -84,6 +90,7 @@ public class AnswerServiceImp implements AnswerService {
             User p_user = userMapper.queryUserById(problem.getUid());//发布者
             int bill = problem.getBill();
             a_user.setBill(a_user.getBill() + bill);
+            a_user.setExp(a_user.getExp()+50);//回答有效，经验+50
             p_user.setBill(p_user.getBill() - bill);
             userMapper.updateUser(a_user);
             userMapper.updateUser(p_user);

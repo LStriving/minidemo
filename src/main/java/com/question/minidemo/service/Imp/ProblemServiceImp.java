@@ -6,6 +6,7 @@ import com.question.minidemo.mapper.ProblemMapper;
 import com.question.minidemo.mapper.UserMapper;
 import com.question.minidemo.service.ProblemService;
 import com.question.minidemo.utils.JsonResult;
+import org.apache.ibatis.annotations.Case;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -43,9 +44,43 @@ public class ProblemServiceImp implements ProblemService {
         if(user.getBill()<problem.getBill()||problem.getBill()<=0){
             return new JsonResult<>("30000",null);//赏金设置非法
         }
+        //新增等级限制
+        switch (user.getLevel()){
+            case 0://刚注册的用户
+                if (user.getBill()>100){
+                    return new JsonResult<>("40000",null);//赏金设置权限不够
+                }
+                break;
+            case 1:
+                if(user.getBill()>200){
+                    return new JsonResult<>("40000",null);//赏金设置权限不够
+                }
+                break;
+            case 2:
+                if (user.getBill()>300){
+                    return new JsonResult<>("40000",null);//赏金设置权限不够
+                }
+                break;
+            case 3:
+                if (user.getBill()>400){
+                    return new JsonResult<>("40000",null);//赏金设置权限不够
+                }
+                break;
+            case 4:
+                if (user.getBill()>500){
+                    return new JsonResult<>("40000",null);//赏金设置权限不够
+                }
+                break;
+            default:break;
+        }
         problemMapper.insertProblem(problem);
         JsonResult<Problem> json;
         Problem res=problemMapper.queryProblemById(problem.getPid());
+        if(res!=null){
+            //发布成功，增加经验，设置等级
+            user.setExp(user.getExp()+10);
+            userMapper.updateUser(user);
+        }
         json = res != null
                 ?new JsonResult<>("10000",null)     //成功
                 :new JsonResult<>("20000",null);    //失败

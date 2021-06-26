@@ -1,13 +1,10 @@
 basic:
-1.answer controller类功能的添加
 2.question的筛选功能
 3.评论部分，前端如何知道某个评论的cid
 
 additional：
-1.druid数据库
 2.上传图片???（前端按钮）
 
 others：
-1.answer 表的like无法追溯到点赞的人，是否修改？
 2.time的格式，怎么排序
 3.problem 的like和follow是否要按照problem的相同模式

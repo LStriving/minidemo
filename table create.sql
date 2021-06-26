@@ -11,6 +11,7 @@ CREATE TABLE `user`  (
                          `password` varchar(60),
                          `gender` varchar(10),
                          `bill` int(20) not null default 0,
+                         `exp`  int(10) not null default 0,
                          `level` int(2)  not null default 0,
                          `backgroundImg` varchar(225)comment '用户背景图片的地址',
                          `email` varchar(30),

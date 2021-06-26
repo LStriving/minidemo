@@ -10,15 +10,18 @@
         select *from question.user where uid = #{uid}
     </select>
     <insert id="insertUser" parameterType="User">
-        insert into question.user(uid,name,password,email,gender,birth,city)
-        values (#{uid},#{name},#{password},#{email},#{gender},#{birth},#{city})
+        insert into question.user(uid,name,password,email,gender,birth,city,exp,`level`)
+        values (#{uid},#{name,jdbcType=VARCHAR},#{password},
+                #{email},#{gender,jdbcType=VARCHAR},#{birth,jdbcType=DATE},
+                #{city,jdbcType=VARCHAR},#{exp,jdbcType=INTEGER},#{level,jdbcType=INTEGER})
     </insert>
     <select id="queryUserByMail" parameterType="String" resultType="User">
         select *from question.user where email=#{email}
     </select>
     <update id="updateUser" parameterType="User">
-        update question.user set name=#{name,jdbcType=VARCHAR},gender=#{gender,jdbcType=VARCHAR},city=#{city,jdbcType=VARCHAR},birth=#{birth,jdbcType=DATE},
-                               email=#{email},password=#{password}
+        update question.user
+        set name=#{name,jdbcType=VARCHAR},gender=#{gender,jdbcType=VARCHAR},city=#{city,jdbcType=VARCHAR},birth=#{birth,jdbcType=DATE},
+        email=#{email},password=#{password},exp=#{exp,jdbcType=INTEGER},`level`=#{level,jdbcType=INTEGER}
         where uid=#{uid}
     </update>
 </mapper>

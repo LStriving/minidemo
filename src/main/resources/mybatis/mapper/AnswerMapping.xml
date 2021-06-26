@@ -20,7 +20,8 @@
         delete from question.answer where aid=#{aid}
     </delete>
     <update id="updateAnswer" parameterType="Answer">
-        update question.answer set aid=#{aid},content=#{content},pid=#{pid},uid=#{uid},`like`=#{like},`time`=#{time}
+        update question.answer
+        set aid=#{aid},content=#{content},pid=#{pid},uid=#{uid},`like`=#{like},`time`=#{time}
         where aid=#{aid}
     </update>
 

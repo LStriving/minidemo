@@ -12,7 +12,7 @@ public class testProblem {
     ProblemController controller;
     @Test
     public void testAddPro(){
-        controller.publish("3322","33354","BALABALA","Question Title",10,"English");
+        controller.publish("1","33354","算法","Question Title",10,"English");
     }
     @Test
     public void testDeletePro(){

@@ -1161,17 +1161,23 @@ r_pid</ColNames>
       <Position>11</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <index id="318" parent="244" name="email">
+    <column id="318" parent="244" name="exp">
+      <Position>12</Position>
+      <DataType>int(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="319" parent="244" name="email">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="319" parent="244" name="PRIMARY">
+    <key id="320" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uid</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="320" parent="244" name="email">
+    <key id="321" parent="244" name="email">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>email</UnderlyingIndexName>
     </key>
